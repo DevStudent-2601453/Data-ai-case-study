@@ -1,0 +1,67 @@
+Title,Price_GBP,Price_INR,Star_rating,In_stock,Category
+It's Only the Himalayas,45.17,4765.435,2,True,travel_2
+Full Moon over Noah’s Ark: An Odyssey to Mount Ararat and Beyond,49.43,5214.865,4,True,travel_2
+See America: A Celebration of Our National Parks & Treasured Sites,48.87,5155.785,3,True,travel_2
+Vagabonding: An Uncommon Guide to the Art of Long-Term World Travel,36.94,3897.1699999999996,2,True,travel_2
+Under the Tuscan Sun,37.33,3938.3149999999996,3,True,travel_2
+A Summer In Europe,44.34,4677.870000000001,2,True,travel_2
+The Great Railway Bazaar,30.54,3221.97,1,True,travel_2
+A Year in Provence (Provence #1),56.88,6000.84,4,True,travel_2
+The Road to Little Dribbling: Adventures of an American in Britain (Notes From a Small Island #2),23.21,2448.655,1,True,travel_2
+Neither Here nor There: Travels in Europe,38.95,4109.225,3,True,travel_2
+"1,000 Places to See Before You Die",26.08,2751.4399999999996,5,True,travel_2
+Mesaerion: The Best Science Fiction Stories 1800-1849,37.59,3965.7450000000003,1,True,science-fiction_16
+Join,35.67,3763.1850000000004,5,True,science-fiction_16
+"William Shakespeare's Star Wars: Verily, A New Hope (William Shakespeare's Star Wars #4)",43.3,4568.15,4,True,science-fiction_16
+The Project,10.65,1123.575,1,True,science-fiction_16
+Soft Apocalypse,26.12,2755.6600000000003,2,True,science-fiction_16
+Sleeping Giants (Themis Files #1),48.74,5142.070000000001,1,True,science-fiction_16
+Arena,21.36,2253.48,4,True,science-fiction_16
+Foundation (Foundation (Publication Order) #1),32.42,3420.3100000000004,1,True,science-fiction_16
+The Restaurant at the End of the Universe (Hitchhiker's Guide to the Galaxy #2),10.92,1152.06,1,True,science-fiction_16
+Ready Player One,19.07,2011.885,4,True,science-fiction_16
+"Life, the Universe and Everything (Hitchhiker's Guide to the Galaxy #3)",33.26,3508.93,2,True,science-fiction_16
+Dune (Dune #1),54.86,5787.73,1,True,science-fiction_16
+Do Androids Dream of Electric Sheep? (Blade Runner #1),51.48,5431.139999999999,1,True,science-fiction_16
+Three Wishes (River of Time: California #1),44.18,4660.99,2,True,science-fiction_16
+The Last Girl (The Dominion Trilogy #1),36.26,3825.43,2,True,science-fiction_16
+Having the Barbarian's Baby (Ice Planet Barbarians #7.5),34.96,3688.28,4,True,science-fiction_16
+The Book of Basketball: The NBA According to The Sports Guy,44.84,4730.620000000001,5,True,sports-and-games_17
+"Friday Night Lights: A Town, a Team, and a Dream",51.22,5403.71,3,True,sports-and-games_17
+Sugar Rush (Offensive Line #2),24.42,2576.3100000000004,1,True,sports-and-games_17
+Settling the Score (The Summer Games #1),44.91,4738.004999999999,2,True,sports-and-games_17
+Icing (Aces Hockey #2),40.44,4266.42,4,True,sports-and-games_17
+The Most Perfect Thing: Inside (and Outside) a Bird's Egg,42.96,4532.28,4,True,science_22
+Immunity: How Elie Metchnikoff Changed the Course of Modern Medicine,57.36,6051.48,5,True,science_22
+Sorting the Beef from the Bull: The Science of Food Fraud Forensics,44.74,4720.070000000001,4,True,science_22
+Tipping Point for Planet Earth: How Close Are We to the Edge?,37.55,3961.5249999999996,1,True,science_22
+"The Fabric of the Cosmos: Space, Time, and the Texture of Reality",55.91,5898.504999999999,1,True,science_22
+Diary of a Citizen Scientist: Chasing Tiger Beetles and Other New Ways of Engaging the World,28.41,2997.255,1,True,science_22
+The Origin of Species,10.01,1056.055,4,True,science_22
+The Grand Design,13.76,1451.68,3,True,science_22
+Peak: Secrets from the New Science of Expertise,16.28,1717.5400000000002,2,True,science_22
+"The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory",13.03,1374.665,4,True,science_22
+"The Disappearing Spoon: And Other True Tales of Madness, Love, and the History of the World from the Periodic Table of the Elements",57.35,6050.425,5,True,science_22
+"Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",25.83,2725.0649999999996,2,True,science_22
+Seven Brief Lessons on Physics,30.6,3228.3,4,True,science_22
+The Selfish Gene,29.45,3106.975,1,True,science_22
+The Lucifer Effect: Understanding How Good People Turn Evil,10.4,1097.2,1,True,psychology_26
+The Golden Condom: And Other Essays on Love Lost and Found,39.43,4159.865,1,True,psychology_26
+It Didn't Start with You: How Inherited Family Trauma Shapes Who We Are and How to End the Cycle,56.27,5936.485000000001,3,True,psychology_26
+An Unquiet Mind: A Memoir of Moods and Madness,21.3,2247.15,3,True,psychology_26
+"Thinking, Fast and Slow",21.14,2230.27,1,True,psychology_26
+Civilization and Its Discontents,59.95,6324.725,2,True,psychology_26
+8 Keys to Mental Health Through Exercise,31.04,3274.72,1,True,psychology_26
+The Dirty Little Secrets of Getting Your Dream Job,33.34,3517.3700000000003,4,True,business_35
+The Third Wave: An Entrepreneur’s Vision of the Future,12.61,1330.355,5,True,business_35
+The 10% Entrepreneur: Live Your Startup Dream Without Quitting Your Day Job,27.55,2906.525,3,True,business_35
+Shoe Dog: A Memoir by the Creator of NIKE,23.99,2530.9449999999997,2,True,business_35
+Made to Stick: Why Some Ideas Survive and Others Die,38.85,4098.675,5,True,business_35
+Quench Your Own Thirst: Business Lessons Learned Over a Beer or Two,43.14,4551.27,1,True,business_35
+The Art of Startup Fundraising,21.0,2215.5,3,True,business_35
+Born for This: How to Find the Work You Were Meant to Do,21.59,2277.745,5,True,business_35
+The E-Myth Revisited: Why Most Small Businesses Don't Work and What to Do About It,36.91,3894.0049999999997,1,True,business_35
+"Rich Dad, Poor Dad",51.74,5458.570000000001,1,True,business_35
+The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses,33.92,3578.5600000000004,3,True,business_35
+Rework,44.88,4734.84,2,True,business_35
+Silence in the Dark (Logan Point #4),58.33,6153.815,3,True,suspense_44
