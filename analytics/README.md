@@ -23,20 +23,36 @@ analytics/
 
 ## Notebooks explained
 
-- `01_eda.ipynb` — Loads `titanic.csv` once at the top of the notebook and performs:
-  - Missing value analysis with a clear handling policy (drop if small %, median/mode for 5–30%, drop column if >30%).
-  - Univariate plots (histograms, boxplots), bivariate analysis (survival by `pclass`, `sex`, `age`), and correlation heatmaps.
-  - Charts are saved to `charts/` for reporting and reproducibility.
+- `01_eda.ipynb` — The notebook starts by loading `titanic.csv` into a pandas DataFrame and then executes these key code steps:
+  - Inspect data shape, data types, and the first rows to understand column contents.
+  - Count missing values and document which columns need cleaning.
+  - Apply missing-value handling rules in code: numeric columns use median imputation, categorical columns use mode, and columns with excessive missingness are dropped.
+  - Create univariate plots with Matplotlib/Seaborn such as histograms for `age`, `fare`, and bar charts for `sex` and `pclass`.
+  - Create bivariate visualizations to compare survival rates by `sex`, `pclass`, `age`, and `fare`.
+  - Build a correlation matrix and render it as a heatmap to highlight relationships between numeric features.
+  - Save each figure with `plt.savefig(...)` into the `charts/` folder so the visuals are preserved outside the notebook.
+  - Export summary tables and cleaned subsets as CSV files when useful for later modeling.
 
-- `02_modeling.ipynb` — Continues from the cleaned dataset and includes:
-  - Feature selection that excludes direct target proxies (`alive`, duplicate columns) to avoid leakage.
-  - A single, reproducible data load; stratified `train_test_split` to preserve target proportions.
-  - `ColumnTransformer`-based preprocessing with numeric imputing/scaling and categorical imputation + one-hot encoding.
-  - Training of three classifiers: Logistic Regression, Decision Tree, Random Forest.
-  - Imbalance experiments: baseline, `class_weight='balanced'`, and SMOTE oversampling (using `imblearn.pipeline`).
-  - Hyperparameter tuning for Random Forest with `GridSearchCV` (CV results printed and best estimator saved).
-  - Regression subtask that models `fare` with a preprocessing pipeline and `LinearRegression` and reports MAE/RMSE/R².
-  - Saves the best full pipeline to `best_titanic_pipeline.pkl` and demonstrates loading/predicting from it.
+- `02_modeling.ipynb` — This notebook loads the same cleaned dataset and follows a structured modeling workflow:
+  - Drop direct target proxies and redundant columns before modeling to prevent leakage and keep features meaningful.
+  - Use `train_test_split(..., stratify=y)` so the target distribution is preserved between training and test sets.
+  - Define preprocessing pipelines using `ColumnTransformer`:
+    - Numeric branch: impute missing values with `SimpleImputer(strategy='median')`, then scale numeric features with `StandardScaler`.
+    - Categorical branch: impute missing values with `SimpleImputer(strategy='most_frequent')`, then encode with `OneHotEncoder(handle_unknown='ignore')`.
+  - Construct full model pipelines with `imblearn.pipeline.Pipeline` for each classifier, enabling consistent preprocessing plus modeling in one object.
+  - Train baseline classifiers and compare metrics:
+    - Logistic Regression
+    - Decision Tree
+    - Random Forest
+  - Run imbalance handling experiments using class weighting and SMOTE oversampling. The notebook compares results from:
+    - baseline model
+    - `class_weight='balanced'` model
+    - SMOTE pipeline with oversampling in the training data
+  - Evaluate models using confusion matrices, classification reports, ROC AUC, and feature importance where applicable.
+  - Perform a separate regression subtask for `fare` using a similar preprocessing pipeline and `LinearRegression`; report MAE, RMSE, and R².
+  - Use `GridSearchCV` to tune Random Forest hyperparameters and print the best parameters and cross-validation results.
+  - Persist the recommended production pipeline with `joblib.dump(best_pipeline, 'analytics/best_titanic_pipeline.pkl')`.
+  - Demonstrate how to reload the pipeline with `joblib.load(...)` and make predictions on new data.
 
 ## How to run the analysis (quick)
 
