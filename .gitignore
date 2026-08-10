@@ -42,3 +42,13 @@ htmlcov/
 
 # Type checker
 .mypy_cache/
+
+# Ignore screenshots from Data Pipeline
+data_pipeline/*.png
+
+# Ignore Jupyter notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Ignore SQLite databases (optional if you don't want to track them)
+# *.db
+# *.sqlite3

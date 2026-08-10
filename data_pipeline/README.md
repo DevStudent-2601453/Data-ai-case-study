@@ -1,113 +1,196 @@
-Module 1 — Data Pipeline
-Overview
+# Data Pipeline
 
-This module implements an end-to-end data pipeline using book data from Books to Scrape, a public website created for web scraping practice.
+This folder contains a small end-to-end data pipeline that scrapes book data from Books to Scrape, cleans it, converts prices, stores the data in a SQLite database, and demonstrates basic SQL queries.
 
-The pipeline performs the following tasks:
+## What this pipeline does
 
-Scrapes book information using Requests and BeautifulSoup.
-Stores the raw data in data/raw_books.csv.
-Cleans and transforms the data using Pandas.
-Converts book prices from GBP to INR using the project-defined exchange rate of 1 GBP = ₹105.50.
-Stores the cleaned dataset in data/clean_books.csv.
-Loads the cleaned data into a normalized SQLite database.
-Executes SQL queries demonstrating the required SQL operations.
-Reads SQL query results into Pandas DataFrames.
-Reproduces the SQL JOIN using pd.merge() and verifies that both approaches produce identical results.
+The project has three main stages:
 
-The final dataset contains 66 books across 7 categories.
+1. Scraping
+   - The script collects book information from several categories on the Books to Scrape website.
+   - It extracts fields such as title, price, star rating, stock status, and category.
+   - The scraped results are saved as raw data in the data folder.
 
-Repository Structure
-![alt text](image.png)
+2. Cleaning and transformation
+   - The cleaning script reads the raw CSV file.
+   - It removes the pound sign from prices and converts them to numeric values.
+   - It maps star ratings from words like "One" and "Five" to numeric values.
+   - It converts the stock text into a boolean value.
+   - It creates a new INR price column using an exchange rate of 105.50.
+   - It removes rows with missing essential values and saves the cleaned dataset.
 
-Files
-![alt text](image-1.png)
+3. Database and SQL demonstration
+   - The notebook in this folder loads the cleaned data into a SQLite database.
+   - It runs sample SQL queries to show filtering, ordering, grouping, and joins.
+   - The SQL statements are also saved in the data folder.
 
-Setup
+## Project structure
 
-Navigate to the module:
-![alt text](image-2.png)
+```text
+data_pipeline/
+├── cleaning.py            # Reads raw data and creates the cleaned CSV file
+├── scraping.py            # Scrapes book data from the website
+├── Database.ipynb         # Notebook for database loading and SQL examples
+├── requirements.txt       # Python dependencies for the pipeline
+├── data/                  # Input/output data files
+│   ├── raw_books.csv      # Raw scraped records
+│   ├── clean_books.csv    # Cleaned and transformed records
+│   ├── sql_query.txt      # SQL queries used in the notebook
+│   └── bookStore.db       # SQLite database file
+└── README.md              # Project documentation
+```
 
-Create a virtual environment:
-![alt text](image-3.png)
-Activate it
+## Files and folders explained
 
-Windows
-![alt text](image-4.png)
+### scraping.py
 
-Install the required packages:
-![alt text](image-5.png)
+This file is the first step of the pipeline. It is used when you want to collect fresh data from the website.
 
-Dependencies
-    requests
-    beautifulsoup4
-    pandas
-    sqlite3 (Python Standard Library)
+What it does:
+- Imports requests to send HTTP requests to the website.
+- Uses BeautifulSoup to parse the HTML content.
+- Visits several book categories from Books to Scrape.
+- Extracts the book title, price, star rating, stock status, and category.
+- Stores all the results in a list and converts them into a pandas DataFrame.
+- Saves the raw output to data/raw_books.csv.
 
-Running the Pipeline
+When it is used:
+- Run this script before any cleaning or database work.
+- Use it whenever you want to refresh the dataset from the website.
 
-Step 1 — Scrape the Data
-![alt text](image-6.png)
+Why it is important:
+- It collects the source data that the rest of the pipeline depends on.
 
-Step 2 — Clean the Data
-![alt text](image-7.png)
+### cleaning.py
 
-Step 3 — Build the Database
-![alt text](image-8.png)
+This file is the second step of the pipeline. It is used after scraping to transform the raw data into a cleaner, more analysis-friendly dataset.
 
-Pipeline Flow
-![alt text](image-9.png)
+What it does:
+- Reads the raw CSV file created by scraping.py.
+- Removes the currency symbol from the price values.
+- Converts price strings into numeric values.
+- Maps star-rating text values such as One, Two, Three, Four, and Five to numbers.
+- Converts the stock text into a boolean value.
+- Creates a new Price_INR column by multiplying the GBP price by 105.50.
+- Removes rows that have missing values in important columns.
+- Saves the cleaned data to data/clean_books.csv.
 
-Web Scraping
+When it is used:
+- Run this after scraping.py has successfully created the raw CSV file.
+- Use it whenever the raw data needs to be cleaned or standardized.
 
-The scraper collects data from the following categories:
+Why it is important:
+- It prepares the data for databases, analysis, and machine learning workflows.
 
-Travel
-Music
-Art
-Horror
-History
-Health
-Food and Drink
+### Database.ipynb
 
-The collected fields include:
+This notebook is the final step of the pipeline. It is used after the cleaned CSV file is available.
 
-Title
-Price
-Star Rating
-Availability
-Category
+What it does:
+- Loads the cleaned dataset from the CSV file.
+- Connects to a SQLite database.
+- Stores the cleaned data in a database table.
+- Runs SQL queries to demonstrate common operations such as SELECT, WHERE, ORDER BY, LIMIT, DISTINCT, BETWEEN, and JOIN.
+- Shows how SQL results can be explored in a notebook environment.
 
-SQL Queries
+When it is used:
+- Run this after the cleaning step is complete.
+- Use it when you want to work with the data in SQL rather than only in pandas.
 
-The notebook demonstrates:
+Why it is important:
+- It connects the data pipeline to a database workflow and demonstrates SQL usage.
 
-SELECT
-WHERE
-ORDER BY
-LIMIT
-DISTINCT
-BETWEEN
-LEFT JOIN
+### requirements.txt
 
-All SQL queries and their outputs are saved in
-![alt text](image-14.png)
-![alt text](image-12.png)
-![alt text](image-13.png)
-![alt text](image-11.png)
-![alt text](image-10.png)
+This file lists the Python packages needed to run the pipeline.
 
-Summary
+What it contains:
+- requests: used in scraping.py to send HTTP requests to the website.
+- beautifulsoup4: used in scraping.py to parse the HTML structure of the web page.
+- pandas: used in both scraping.py and cleaning.py to create and manipulate DataFrames and CSV files.
+- os: used in the scripts for file and directory management such as creating the data folder.
 
-The Data Pipeline module:
+Why these are used:
+- requests and BeautifulSoup allow the code to access and parse online content.
+- pandas makes it easy to work with tabular data.
+- os helps create folders and paths safely across the system.
 
-Scrapes 66 books from 7 categories.
-Cleans and transforms the data using Pandas.
-Converts prices from GBP to INR.
-Stores the processed data in a normalized SQLite database.
-Executes SQL queries demonstrating key SQL operations.
-Loads SQL results into Pandas.
-Verifies SQL JOIN results using pd.merge().
-Produces all required datasets, database files, and SQL outputs for the project.
+When they are used:
+- requests and BeautifulSoup are used during scraping.
+- pandas is used during both scraping and cleaning.
+- os is used when creating the data directory and saving files.
 
-This version is consistent with your repository (Data-ai-case-study), uses your actual file names (scraping.py, cleaning.py, Database.ipynb, bookStore.db, sql_query.txt), and removes the conflicting references that were present in the original README.
+### data/raw_books.csv
+- Raw scraped data before cleaning.
+
+### data/clean_books.csv
+- Cleaned dataset used for further analysis and database loading.
+
+### data/sql_query.txt
+- Stores SQL examples used in the notebook.
+
+### data/bookStore.db
+- SQLite database file produced from the cleaned data.
+
+## Installation
+
+1. Go to the project folder:
+   ```bash
+   cd data_pipeline
+   ```
+
+2. Create a virtual environment:
+   ```bash
+   python -m venv .venv
+   ```
+
+3. Activate it:
+   ```bash
+   .venv\Scripts\activate
+   ```
+
+4. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Run the pipeline
+
+Run the scraper first:
+
+```bash
+python scraping.py
+```
+
+Then run the cleaning script:
+
+```bash
+python cleaning.py
+```
+
+Finally, open and run the notebook:
+
+- Database.ipynb
+
+## Parsing and cleaning decisions
+
+The project makes a few deliberate decisions during preprocessing:
+
+- Price parsing
+  - The price strings include a pound sign, so the script removes "£" and converts the values to numbers.
+
+- Rating conversion
+  - The website stores ratings as words like "One", "Two", etc. These are mapped to numeric values from 1 to 5.
+
+- Stock status conversion
+  - The text "In stock" is converted to a boolean value so it can be used more easily in analysis.
+
+- Missing values
+  - Missing or incomplete essential values are removed to keep the final dataset reliable.
+
+- Currency conversion
+  - Prices are converted from GBP to INR using the fixed rate 105.50.
+
+## Notes
+
+This pipeline is a beginner-friendly example of how data can move from a website to a structured dataset and then into a database for SQL analysis.
