@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pydantic
+sentence-transformers
+chromadb
+python-dotenv
+# Optional: enable real Groq LLM mode with MOCK_LLM=0
+# groq

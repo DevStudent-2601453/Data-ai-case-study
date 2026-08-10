@@ -1,0 +1,9 @@
+.venv
+chroma_db
+models_cache
+__pycache__/
+*.pyc
+.git
+.gitignore
+data_pipeline
+support_assistant/.venv
