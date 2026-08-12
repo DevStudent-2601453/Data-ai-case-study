@@ -212,6 +212,4 @@ These were verified against the running local FastAPI server with `MOCK_LLM` lef
   - Policy query: confirmed routing to `retrieve_and_answer`, top result from `doc_5` (Order Cancellation Policy), and deterministic mock answer.
   - General query: confirmed routing to `direct_answer` and canned response.
 
-**Next recommended cleanups (optional)**
-- Remove the `sys.path` fallback in `app/graph.py` once you always run from the repo root or as a module (`python -m app.graph`).
-- For production: replace local `models_cache/` with a reproducible model download policy, and persist ChromaDB data in a mounted volume.
+
